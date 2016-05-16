@@ -47,7 +47,7 @@ public class Environment {
         this.random = new Random();
     }
 
-    //THIS METHOD SHOULD BE CALLED IN THE METHOD computeFitness BEFORE A
+    //THIS METHOD SHOULD BE CALLED IN THE METHOD computeFitness BEFORE
     //ALL THE SIMULATIONS START.
     public void setPredatorsWeights(double[] weights) {
         for (Predator predator : predators) {
