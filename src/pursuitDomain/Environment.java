@@ -83,14 +83,27 @@ public class Environment {
     //MAKES A SIMULATION OF THE ENVIRONMENT. THE AGENTS START IN THE POSITIONS
     //WHERE THEY WHERE PLACED IN METHOD initializeAgentsPositions.
     public void simulate() {
-        //TODO
+        System.out.println(computePredatorsPreyDistanceSum());
     }
 
     //COMPUTES THE SUM OF THE (SMALLEST) DISTANCES OF ALL THE PREDATORS TO THE PREY.
     //IT TAKES INTO ACCOUNT THAT THE ENVIRONMENT IS TOROIDAL.
+    
     public int computePredatorsPreyDistanceSum() {
-        //TODO
-        return 0;
+        int sum = 0,xx = 0,yy = 0;
+        int preyx = prey.getCell().getColumn();
+        int preyy = prey.getCell().getLine();
+        for (Predator p : predators){
+            xx = (Math.abs(p.getCell().getColumn() - preyx));
+            yy = (Math.abs(p.getCell().getLine()- preyy));
+            if ((Math.abs(p.getCell().getColumn() - preyx))>5)
+                xx = (10 - ((Math.abs(p.getCell().getColumn()))));
+            if ((Math.abs(p.getCell().getLine()- preyy))>5)
+                yy = (10 - ((Math.abs(p.getCell().getLine()))));
+            
+            sum += Math.sqrt (xx * xx + yy * yy);
+        }
+        return sum;
     }
     
     public int getSize() {
