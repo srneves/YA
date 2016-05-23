@@ -26,6 +26,8 @@ public class PanelParameters extends PanelAtributesValue {
     public static final String TOURNAMENT_SIZE = "2";
     public static final String PROB_RECOMBINATION = "0.7";
     public static final String PROB_MUTATION = "0.1";
+    String[] controllers = {"Random", "Ad-hoc", "Neural Networks"};
+    JComboBox jComboBoxController = new JComboBox(controllers);
     JTextField jTextFieldSeed = new JTextField(SEED, TEXT_FIELD_LENGHT);
     JTextField jTextFieldN = new JTextField(POPULATION_SIZE, TEXT_FIELD_LENGHT);
     JTextField jTextFieldGenerations = new JTextField(GENERATIONS, TEXT_FIELD_LENGHT);
@@ -40,6 +42,10 @@ public class PanelParameters extends PanelAtributesValue {
     
     public PanelParameters() {
         title = "Genetic algorithm parameters";
+        
+        labels.add(new JLabel("Controller:"));
+        valueComponents.add(jComboBoxController);
+        jComboBoxController.addActionListener(new JComboBoxSelectionMethods_ActionAdapter(this));
 
         labels.add(new JLabel("Seed: "));
         valueComponents.add(jTextFieldSeed);

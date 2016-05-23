@@ -1,6 +1,7 @@
 package pursuitDomain;
 
 import java.awt.Color;
+import java.util.Random;
 
 public class Predator extends Agent {
    
@@ -52,10 +53,15 @@ public class Predator extends Agent {
         buildPerception(environment);
         execute(decide(), environment);
     }
+    
+    public void actRandom(Environment environment){
+        Random rnd = new Random();
+        execute(Action.values()[rnd.nextInt(4)], environment);
+    }
 
     //Predators' coordinates relative to the Prey
     private void buildPerception(Environment environment) {
-        //TODO
+        
     }
 
     private Action decide() {

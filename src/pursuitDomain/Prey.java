@@ -17,9 +17,34 @@ public class Prey extends Agent{
     
     @Override
     public void act(Environment environment) {
-        if( rnd.nextInt(1) > restProbability){
-            List<Cell> freeCells = environment.getFreeSorroundingCells(cell);
-            Cell nextCell = freeCells.get(rnd.nextInt(freeCells.size()));
+        
+    }
+    
+    public void actRandom(Environment environment) {
+        if( rnd.nextDouble() > restProbability){
+            execute(decide(), environment);
+        }
+    }
+    
+    private Action decide() {
+        Action[] actions = Action.values();
+        return actions[rnd.nextInt(4)];
+    }
+    
+    private void execute(Action action, Environment environment) {
+        Cell nextCell;
+        if (action == Action.NORTH) {
+            nextCell = environment.getNorthCell(cell);
+        } else if (action == Action.SOUTH) {
+            nextCell = environment.getSouthCell(cell);
+        } else if (action == Action.WEST) {
+            nextCell = environment.getWestCell(cell);
+        } else {
+            nextCell = environment.getEastCell(cell);
+        }
+
+        if (!nextCell.hasAgent()) {
+            setCell(nextCell);
         }
     }
 }
