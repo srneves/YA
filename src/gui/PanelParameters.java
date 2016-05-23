@@ -82,6 +82,7 @@ public class PanelParameters extends PanelAtributesValue {
     }
 
     public void actionPerformedSelectionMethods(ActionEvent e) {
+        PanelSimulation.CONTROLLER = (String) jComboBoxController.getSelectedItem();
         jTextFieldTournamentSize.setEnabled(jComboBoxSelectionMethods.getSelectedIndex() == 0);
     }
 
