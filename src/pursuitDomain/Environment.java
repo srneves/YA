@@ -83,7 +83,10 @@ public class Environment {
     //MAKES A SIMULATION OF THE ENVIRONMENT. THE AGENTS START IN THE POSITIONS
     //WHERE THEY WHERE PLACED IN METHOD initializeAgentsPositions.
     public void simulate() {
-        //TODO
+        prey.actRandom(this);
+        for (Predator p : predators) {
+            p.actRandom(this);
+        }
     }
 
     //COMPUTES THE SUM OF THE (SMALLEST) DISTANCES OF ALL THE PREDATORS TO THE PREY.
