@@ -83,6 +83,10 @@ public class Environment {
     //MAKES A SIMULATION OF THE ENVIRONMENT. THE AGENTS START IN THE POSITIONS
     //WHERE THEY WHERE PLACED IN METHOD initializeAgentsPositions.
     public void simulate() {
+        
+    }
+    
+    public void simulateRandom() {
         System.out.println(computePredatorsPreyDistanceSum());
         prey.actRandom(this);
         for (Predator p : predators) {
@@ -90,9 +94,11 @@ public class Environment {
         }
     }
 
+    public void simulateAdhoc() {
+    }
+
     //COMPUTES THE SUM OF THE (SMALLEST) DISTANCES OF ALL THE PREDATORS TO THE PREY.
     //IT TAKES INTO ACCOUNT THAT THE ENVIRONMENT IS TOROIDAL.
-    
     public int computePredatorsPreyDistanceSum() {
         int sum = 0,xx = 0,yy = 0;
         int preyx = prey.getCell().getColumn();
@@ -182,13 +188,5 @@ public class Environment {
         for (EnvironmentListener listener : listeners) {
             listener.environmentUpdated();
         }
-    }    
-
-    public void simulateRandom() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void simulateAdhoc() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
