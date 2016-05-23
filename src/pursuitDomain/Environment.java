@@ -183,4 +183,12 @@ public class Environment {
             listener.environmentUpdated();
         }
     }    
+
+    public void simulateRandom() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void simulateAdhoc() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

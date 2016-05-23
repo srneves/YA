@@ -21,6 +21,7 @@ public class PanelSimulation extends JPanel implements EnvironmentListener {
     public static final int CELL_SIZE = 20;
     public static final int GRID_TO_PANEL_GAP = 20;
     MainFrame mainFrame;
+    public String CONTROLLER = "Random";
     private Environment environment;
     private Image image;
     JPanel environmentPanel = new JPanel();
@@ -68,8 +69,13 @@ public class PanelSimulation extends JPanel implements EnvironmentListener {
                     environment.initializeAgentsPositions(i);
                     for(int j=0; j < 20; j++){
                         environmentUpdated();
-                        //if()
-                        environment.simulate();
+                        if(CONTROLLER.equals("Random")){
+                            environment.simulateRandom();
+                        }else if(CONTROLLER.equals("Ad-hoc")){
+                            environment.simulateAdhoc();
+                        }else{
+                            environment.simulate();
+                        }
                     }
                 }
                 return null;
