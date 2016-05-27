@@ -1,6 +1,7 @@
 package pursuitDomain;
 
 import java.awt.Color;
+import java.util.List;
 import java.util.Random;
 
 public class Predator extends Agent {
@@ -58,6 +59,10 @@ public class Predator extends Agent {
         Random rnd = new Random();
         execute(Action.values()[rnd.nextInt(4)], environment);
     }
+    
+    void actAdhoc(Environment environment) {
+        execute(decideAdhoc(environment), environment);
+    }
 
     //Predators' coordinates relative to the Prey
     private void buildPerception(Environment environment) {
@@ -76,6 +81,34 @@ public class Predator extends Agent {
             return Action.WEST;
         }
         return Action.EAST;
+    }
+    
+    private Action decideAdhoc(Environment environment) {
+        Prey prey =  environment.getPrey();
+        int verticalDist = calculatePredatorPreyDistance(this.cell.getLine(), prey.cell.getLine());
+        int horizontalDist = calculatePredatorPreyDistance(this.cell.getColumn(), prey.cell.getColumn());
+        
+        if(this.cell.getLine() == prey.cell.getLine()){
+            if(horizontalDist > 0){
+                return Action.EAST;
+            }else{
+                return Action.WEST;
+            }
+        }
+        
+        if(this.cell.getColumn() == prey.cell.getColumn()){
+            if(verticalDist > 0){
+                return Action.SOUTH;
+            }else{
+                return Action.NORTH;
+            }
+        }
+        
+        return null;
+    }
+    
+    private int calculatePredatorPreyDistance(int predatorCellValue, int preyCellValue) {
+        return preyCellValue - predatorCellValue;
     }
 
     private void execute(Action action, Environment environment) {
@@ -111,5 +144,5 @@ public class Predator extends Agent {
      */
     private void forwardPropagation() {
         //TODO
-    }    
+    }
 }

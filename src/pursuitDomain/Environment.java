@@ -88,13 +88,17 @@ public class Environment {
     
     public void simulateRandom() {
         System.out.println(computePredatorsPreyDistanceSum());
-        prey.actRandom(this);
+        prey.act(this);
         for (Predator p : predators) {
             p.actRandom(this);
         }
     }
 
     public void simulateAdhoc() {
+        prey.act(this);
+        for (Predator p : predators) {
+            p.actAdhoc(this);
+        }
     }
 
     //COMPUTES THE SUM OF THE (SMALLEST) DISTANCES OF ALL THE PREDATORS TO THE PREY.

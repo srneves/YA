@@ -1,7 +1,6 @@
 package pursuitDomain;
 
 import java.awt.Color;
-import java.util.List;
 import java.util.Random;
 
 public class Prey extends Agent{
@@ -17,10 +16,6 @@ public class Prey extends Agent{
     
     @Override
     public void act(Environment environment) {
-        
-    }
-    
-    public void actRandom(Environment environment) {
         if( rnd.nextDouble() > restProbability){
             execute(decide(), environment);
         }
