@@ -88,23 +88,19 @@ public class Predator extends Agent {
         int verticalDist = calculatePredatorPreyDistance(this.cell.getLine(), prey.cell.getLine());
         int horizontalDist = calculatePredatorPreyDistance(this.cell.getColumn(), prey.cell.getColumn());
         
-        if(this.cell.getLine() == prey.cell.getLine()){
+        if(verticalDist > horizontalDist){
             if(horizontalDist > 0){
                 return Action.EAST;
             }else{
                 return Action.WEST;
             }
-        }
-        
-        if(this.cell.getColumn() == prey.cell.getColumn()){
+        }else{
             if(verticalDist > 0){
                 return Action.SOUTH;
             }else{
                 return Action.NORTH;
             }
         }
-        
-        return null;
     }
     
     private int calculatePredatorPreyDistance(int predatorCellValue, int preyCellValue) {
