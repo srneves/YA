@@ -108,12 +108,12 @@ public class Environment {
         int preyx = prey.getCell().getColumn();
         int preyy = prey.getCell().getLine();
         for (Predator p : predators){
-            xx = (Math.abs(p.getCell().getColumn() - preyx));
-            yy = (Math.abs(p.getCell().getLine()- preyy));
-            if ((Math.abs(p.getCell().getColumn() - preyx))>5)
-                xx = (10 - ((Math.abs(p.getCell().getColumn()))));
-            if ((Math.abs(p.getCell().getLine()- preyy))>5)
-                yy = (10 - ((Math.abs(p.getCell().getLine()))));
+            xx = Math.abs(p.getCell().getColumn() - preyx);
+            yy = Math.abs(p.getCell().getLine()- preyy);
+            if (Math.abs(p.getCell().getColumn() - preyx) > 5)
+                xx = 10 - Math.abs(p.getCell().getColumn());
+            if (Math.abs(p.getCell().getLine()- preyy) > 5)
+                yy = 10 - Math.abs(p.getCell().getLine());
             
             sum += Math.sqrt (xx * xx + yy * yy);
         }

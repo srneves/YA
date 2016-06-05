@@ -64,10 +64,10 @@ public class PanelSimulation extends JPanel implements EnvironmentListener {
                 double[] weights = mainFrame.getBestInRun().getGenome();
                 int environmentSimulations = mainFrame.getProblem().getNumEvironmentSimulations();
 
-                for (int i = 0; i < 1/*environmentSimulations*/; i++) {
+                for (int i = 0; i < environmentSimulations; i++) {
                     environment.setPredatorsWeights(weights);
                     environment.initializeAgentsPositions(i);
-                    for(int j=0; j < 20; j++){
+                    //for(int j=0; j < 20; j++){
                         environmentUpdated();
                         if(CONTROLLER.equals("Random")){
                             environment.simulateRandom();
@@ -76,7 +76,7 @@ public class PanelSimulation extends JPanel implements EnvironmentListener {
                         }else{
                             environment.simulate();
                         }
-                    }
+                    //}
                 }
                 return null;
             }

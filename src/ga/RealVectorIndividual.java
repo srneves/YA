@@ -2,14 +2,13 @@ package ga;
 
 public abstract class RealVectorIndividual <P extends Problem, I extends RealVectorIndividual> extends Individual<P, I>{
 
-    //TODO: GENOME DEFINITION;
     protected double genome[];
     
     public RealVectorIndividual(P problem, int size) {
         super(problem);
         this.genome = new double[size];
         for (int g = 0; g < genome.length; g++) {
-            genome[g] = (GeneticAlgorithm.random.nextDouble());
+            genome[g] = GeneticAlgorithm.random.nextDouble();
         }
     }
 
