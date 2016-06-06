@@ -19,10 +19,12 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
 
     @Override
     public double computeFitness() {
-        //setPredatorsWeights();
-        int distancia = environment.computePredatorsPreyDistanceSum();
+        //setPredatorsWeights();???
+        //somatorio da distancia dos predadores
+        //a dividir pelo numchatches +1
+        //fitness = environment.computePredatorsPreyDistanceSum();
         
-        return distancia;
+        return fitness;
     }
 
     public double[] getGenome(){

@@ -67,12 +67,14 @@ public class Predator extends Agent {
 
     //Predators' coordinates relative to the Prey
     private void buildPerception(Environment environment) {
-        
+            for (int i=0; i< inputs.length; i+=2){
+                inputs[i] = calculateVerticalPredatorPreyDistance(environment.getPrey());
+                inputs[i+1] = calculateHorizontalPredatorPreyDistance(environment.getPrey());
+            }
     }
 
     private Action decide() {
         forwardPropagation();
-               
         //Here we are assuming that the output has two elements, only
         if (output[0] == 0 && output[1] == 0) {
             return Action.NORTH;
@@ -86,8 +88,8 @@ public class Predator extends Agent {
     
     private Action decideAdhoc(Environment environment) {
         Prey prey =  environment.getPrey();
-        int verticalDist = calculatePredatorPreyDistance(this.cell.getLine(), prey.cell.getLine());
-        int horizontalDist = calculatePredatorPreyDistance(this.cell.getColumn(), prey.cell.getColumn());
+        int verticalDist = calculateVerticalPredatorPreyDistance(environment.getPrey());
+        int horizontalDist = calculateHorizontalPredatorPreyDistance(environment.getPrey());
         
         if(verticalDist > horizontalDist){
             if(horizontalDist > 0){
@@ -104,8 +106,12 @@ public class Predator extends Agent {
         }
     }
     
-    private int calculatePredatorPreyDistance(int predatorCellValue, int preyCellValue) {
-        return preyCellValue - predatorCellValue;
+    private int calculateVerticalPredatorPreyDistance(Prey prey) {
+        return prey.cell.getLine()-this.cell.getLine();
+    }
+    
+     private int calculateHorizontalPredatorPreyDistance(Prey prey) {
+        return prey.cell.getColumn()-this.cell.getColumn();
     }
 
     private void execute(Action action, Environment environment) {
