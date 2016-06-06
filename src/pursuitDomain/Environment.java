@@ -83,7 +83,10 @@ public class Environment {
     //MAKES A SIMULATION OF THE ENVIRONMENT. THE AGENTS START IN THE POSITIONS
     //WHERE THEY WHERE PLACED IN METHOD initializeAgentsPositions.
     public void simulate() {
-        
+        prey.act(this);
+        for (Predator p : predators){
+            p.act(this);
+        }
     }
     
     public void simulateRandom() {
