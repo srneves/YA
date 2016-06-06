@@ -1,5 +1,6 @@
 package pursuitDomain;
 
+import ga.GeneticAlgorithm;
 import java.awt.Color;
 import java.util.List;
 import java.util.Random;
@@ -131,6 +132,9 @@ public class Predator extends Agent {
      */
     public void setWeights(double[] weights) {
         //TODO
+        for(int i = 0; i < inputLayerSize; i++){
+            weights[i] = GeneticAlgorithm.random.nextDouble();
+        }
     }
     
     /**
