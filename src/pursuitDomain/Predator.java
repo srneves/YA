@@ -132,8 +132,16 @@ public class Predator extends Agent {
      */
     public void setWeights(double[] weights) {
         //TODO
-        for(int i = 0; i < inputLayerSize; i++){
-            weights[i] = GeneticAlgorithm.random.nextDouble();
+        for(int i = 0;i < inputLayerSize;i++){
+            for(int j = 0;j < hiddenLayerSize;j++){
+                w1[i][j] = GeneticAlgorithm.random.nextDouble() * 2-1;
+            }
+        }
+        
+        for(int j = 0;j < hiddenLayerSize+1;j++){
+            for(int k = 0;k < outputLayerSize;k++){
+                w2[j][k] = GeneticAlgorithm.random.nextDouble() * 2-1;
+            }
         }
     }
     
@@ -144,5 +152,21 @@ public class Predator extends Agent {
      */
     private void forwardPropagation() {
         //TODO
+        double x;
+        for(int j = 0;j < hiddenLayerSize;j++){
+            x = 0;
+            for(int i = 0;i < inputLayerSize;i++){
+                x += inputs[i] * w1[i][j];
+            }
+            hiddenLayerOutput[j] = 1/(1+Math.pow(Math.E, -x));
+        }
+        
+        for(int j = 0;j < outputLayerSize;j++){
+            x = 0;
+            for(int i = 0;i < hiddenLayerSize;i++){
+                x += inputs[i] * w2[i][j];
+            }
+            output[j] = (int) ((int) 1/(1+Math.pow(Math.E, -x)));
+        }
     }
 }
