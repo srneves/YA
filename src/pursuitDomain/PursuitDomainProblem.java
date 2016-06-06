@@ -32,7 +32,7 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
         this.maxIterations = maxIterations;
         this.probPreyRest = probPreyRests;
         this.numPredators = numPredators;
-        this.predatorsNumInputs = 100; //THIS IS A FALSE NUMBER; PLEASE ADAPT TO YOUR CASE
+        this.predatorsNumInputs = 8;
         this.predatorsNumHiddenUnits = numPredatorHiddenUnits;
         this.predatorNumOutputs = NUM_PREDATOR_OUTPUTS;
         this.numEnvironmentRuns = numEnvironmentRuns;
@@ -49,7 +49,7 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
 
     @Override
     public PredatorIndividual getNewIndividual() {
-        int genomeSize = 0; //CHANGE THIS
+        int genomeSize = (predatorsNumInputs + 1) * (predatorsNumHiddenUnits + (predatorsNumHiddenUnits + 1)) * 2;
         return new PredatorIndividual(this, genomeSize /*COMPLETE?*/);
     }
 

@@ -63,7 +63,7 @@ public class PanelSimulation extends JPanel implements EnvironmentListener {
             public Void doInBackground() {
                 double[] weights = mainFrame.getBestInRun().getGenome();
                 int environmentSimulations = mainFrame.getProblem().getNumEvironmentSimulations();
-
+                
                 for (int i = 0; i < environmentSimulations; i++) {
                     environment.setPredatorsWeights(weights);
                     environment.initializeAgentsPositions(i);
