@@ -2,10 +2,13 @@ package pursuitDomain;
 
 import ga.RealVectorIndividual;
 
+
 public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProblem, PredatorIndividual> {
 
-    public PredatorIndividual(PursuitDomainProblem problem, int size /*COMPLETE?*/) {
+    private Environment environment;
+    public PredatorIndividual(PursuitDomainProblem problem, int size , Environment environment /*COMPLETE?*/) {
         super(problem, size);   
+        this.environment = environment;
         //COMPLETE?
     }
 
@@ -16,8 +19,10 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
 
     @Override
     public double computeFitness() {
+        //setPredatorsWeights();
+        int distancia = environment.computePredatorsPreyDistanceSum();
         
-        return 0;
+        return distancia;
     }
 
     public double[] getGenome(){

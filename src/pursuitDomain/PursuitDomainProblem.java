@@ -50,7 +50,7 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
     @Override
     public PredatorIndividual getNewIndividual() {
         int genomeSize = 0; //CHANGE THIS
-        return new PredatorIndividual(this, genomeSize /*COMPLETE?*/);
+        return new PredatorIndividual(this, genomeSize, environment /*COMPLETE?*/);
     }
 
     public Environment getEnvironment() {
