@@ -19,6 +19,12 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
     final private int predatorNumOutputs;
     final private int numEnvironmentRuns;
 
+    public int getNumEnvironmentRuns() {
+        return numEnvironmentRuns;
+    }
+   
+    
+
     final private Environment environment;
 
     public PursuitDomainProblem(
@@ -49,8 +55,9 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
 
     @Override
     public PredatorIndividual getNewIndividual() {
-        int genomeSize = (predatorsNumInputs + 1) * (predatorsNumHiddenUnits + (predatorsNumHiddenUnits + 1)) * 2;
-        return new PredatorIndividual(this, genomeSize /*COMPLETE?*/);
+        //int genomeSize = (predatorsNumInputs + 1) * (predatorsNumHiddenUnits + (predatorsNumHiddenUnits + 1)) * 2;
+        int genomeSize = (predatorsNumInputs + 1) * (predatorsNumHiddenUnits) + (predatorsNumHiddenUnits + 1)* predatorNumOutputs;
+        return new PredatorIndividual(this, genomeSize,environment /*COMPLETE?*/);
     }
 
     public Environment getEnvironment() {
