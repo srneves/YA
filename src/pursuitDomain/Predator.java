@@ -61,7 +61,7 @@ public class Predator extends Agent {
         execute(Action.values()[rnd.nextInt(4)], environment);
     }
     
-    void actAdhoc(Environment environment) {
+    public void actAdhoc(Environment environment) {
         execute(decideAdhoc(environment), environment);
     }
 
@@ -88,17 +88,21 @@ public class Predator extends Agent {
     
     private Action decideAdhoc(Environment environment) {
         Prey prey =  environment.getPrey();
-        int verticalDist = calculateVerticalPredatorPreyDistance(environment.getPrey());
-        int horizontalDist = calculateHorizontalPredatorPreyDistance(environment.getPrey());
+        int verticalDist = calculateVerticalPredatorPreyDistance(prey);
+        int horizontalDist = calculateHorizontalPredatorPreyDistance(prey);
+        /*System.out.print(String.valueOf(horizontalDist));
+        System.out.print("  ");
+        System.out.print(String.valueOf(verticalDist));
+        System.out.print("  ");*/
         
-        if(verticalDist > horizontalDist){
-            if(horizontalDist > 0){
+        if(verticalDist < horizontalDist){
+            if(horizontalDist >= 1){
                 return Action.EAST;
             }else{
                 return Action.WEST;
             }
         }else{
-            if(verticalDist > 0){
+            if(verticalDist >=1 ){
                 return Action.SOUTH;
             }else{
                 return Action.NORTH;
@@ -107,11 +111,19 @@ public class Predator extends Agent {
     }
     
     private int calculateVerticalPredatorPreyDistance(Prey prey) {
-        return prey.cell.getLine()-this.cell.getLine();
+        int val = (Math.abs(prey.cell.getLine()-this.cell.getLine()));
+        if(val>5){
+            return (10-val);
+        }
+        return val;
     }
     
      private int calculateHorizontalPredatorPreyDistance(Prey prey) {
-        return prey.cell.getColumn()-this.cell.getColumn();
+        int val =Math.abs(prey.cell.getColumn()-this.cell.getColumn());
+        if(val>5){
+            return (10-val);
+        }
+        return val;
     }
 
     private void execute(Action action, Environment environment) {
@@ -138,15 +150,15 @@ public class Predator extends Agent {
      */
     public void setWeights(double[] weights) {
         //TODO
+        int k = 0;
         for(int i = 0;i < inputLayerSize;i++){
             for(int j = 0;j < hiddenLayerSize;j++){
-                w1[i][j] = GeneticAlgorithm.random.nextDouble() * 2-1;
+                w1[i][j] = weights[k++];
             }
         }
-        
-        for(int j = 0;j < hiddenLayerSize+1;j++){
-            for(int k = 0;k < outputLayerSize;k++){
-                w2[j][k] = GeneticAlgorithm.random.nextDouble() * 2-1;
+        for(int i = 0;i < hiddenLayerSize+1;i++){
+            for(int j = 0;j < outputLayerSize;j++){
+                w2[i][j] = weights[k++];
             }
         }
     }
@@ -170,7 +182,7 @@ public class Predator extends Agent {
         for(int j = 0;j < outputLayerSize;j++){
             x = 0;
             for(int i = 0;i < hiddenLayerSize;i++){
-                x += inputs[i] * w2[i][j];
+                x += hiddenLayerOutput[i] * w2[i][j];
             }
             output[j] = (int) ((int) 1/(1+Math.pow(Math.E, -x)));
         }
