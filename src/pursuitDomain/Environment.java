@@ -13,8 +13,9 @@ public class Environment {
     private final List<Predator> predators;
     private final Prey prey;
     private final int maxIterations;
+    private int catches;
     
-    //MORE ATTRIBUTES? NO |
+    //MORE ATTRIBUTES? NO!
     
     public Environment(
             int size,
@@ -26,6 +27,7 @@ public class Environment {
             int predatorsNumOutputs) {
 
         this.maxIterations = maxIterations;
+        this.catches = 0;
 
         grid = new Cell[size][size];
         for (int i = 0; i < grid.length; i++) {
@@ -87,6 +89,7 @@ public class Environment {
             }
             if (apanhada()) {
                 System.out.println("apanhado");
+                catches++;
                 return;
             }
         }
@@ -120,6 +123,10 @@ public class Environment {
             sum+=p.calculateVerticalPredatorPreyDistance(prey);
         }
         return sum;
+    }
+
+    public int getNumCatches() {
+        return catches;
     }
     
     public int getSize() {

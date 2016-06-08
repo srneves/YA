@@ -42,6 +42,8 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
         StringBuilder sb = new StringBuilder();
         sb.append("\nfitness: ");
         sb.append(fitness);
+        sb.append("\ncatches: ");
+        sb.append(problem.getEnvironment().getNumCatches());
         sb.append("\nNumero de Simulacoes: ");
         sb.append(problem.getNumEvironmentSimulations());
         
