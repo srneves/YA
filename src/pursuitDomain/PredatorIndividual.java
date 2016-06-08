@@ -3,13 +3,15 @@ package pursuitDomain;
 import ga.GeneticAlgorithm;
 import ga.RealVectorIndividual;
 import gui.MainFrame;
+import gui.PanelParameters;
 
 
 public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProblem, PredatorIndividual> {
 
-    private Environment environment;
+    
     public PredatorIndividual(PursuitDomainProblem problem, int size /*COMPLETE?*/) {
-        super(problem, size);   
+        super(problem, size);  
+        
        
         //COMPLETE?
     }
@@ -21,24 +23,19 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
 
     @Override
     public double computeFitness() {
-        
-        //environment.setPredatorsWeights(this.genome);
-        //System.out.println(String.valueOf(genome));
-        //setPredatorsWeights();
-        //somatorio da distancia dos predadores
-        //a dividir pelo numchatches +1
-        //environment.setPredatorsWeights(this.genome);
-        //int localFitness = 0;
-        //compute fitness after they run: get the iterations, final distance and maybe average distance to prey;
-        //localFitness += environment.computePredatorsPreyDistanceSum();
-        //todo;
-        //}
-        //this.fitness = localFitness;
-        return fitness;
+        Environment env = problem.getEnvironment();
+        env.setPredatorsWeights(genome);
+        fitness = 0;
+        for (int i = 0; i < problem.getNumEvironmentSimulations(); i++){
+            env.initializeAgentsPositions(i);
+            env.simulate();
+            fitness = env.computePredatorsPreyDistanceSum();
+        }    
+       return fitness;
     }
 
     public double[] getGenome(){
-        return genome;
+        return genome.clone();
     }
 
     @Override
@@ -46,6 +43,9 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
         StringBuilder sb = new StringBuilder();
         sb.append("\nfitness: ");
         sb.append(fitness);
+        sb.append("\nNumero de Simulacoes: ");
+        sb.append(problem.getNumEvironmentSimulations());
+        
         //COMPLETE
         return sb.toString();
     }
@@ -59,10 +59,10 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
     @Override
     public int compareTo(PredatorIndividual i) {
         //TODO
-        if(this.computeFitness() > i.computeFitness())
-            return 1;
-        if(this.computeFitness() < i.computeFitness())
+        if(this.fitness > i.fitness)
             return -1;
+        if(this.fitness < i.fitness)
+            return 1;
         return 0;
     }
 

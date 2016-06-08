@@ -48,6 +48,8 @@ public class PanelSimulation extends JPanel implements EnvironmentListener {
     public void setJButtonSimulateEnabled(boolean enabled) {
         buttonSimulate.setEnabled(enabled);
     }
+    
+
 
     public void jButtonSimulate_actionPerformed(ActionEvent e) {
 

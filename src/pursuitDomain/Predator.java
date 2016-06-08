@@ -110,19 +110,19 @@ public class Predator extends Agent {
         }
     }
     
-    private int calculateVerticalPredatorPreyDistance(Prey prey) {
+    public int calculateVerticalPredatorPreyDistance(Prey prey) {
         int val = (Math.abs(prey.cell.getLine()-this.cell.getLine()));
         if(val>5){
             return (10-val);
-        }else
+        }
         return val;
     }
     
-     private int calculateHorizontalPredatorPreyDistance(Prey prey) {
+     public int calculateHorizontalPredatorPreyDistance(Prey prey) {
         int val =Math.abs(prey.cell.getColumn()-this.cell.getColumn());
         if(val>5){
             return (10-val);
-        }else
+        }
         return val;
     }
 
@@ -137,7 +137,6 @@ public class Predator extends Agent {
         } else {
             nextCell = environment.getEastCell(cell);
         }
-
         if (!nextCell.hasAgent()) {
             setCell(nextCell);
         }
@@ -181,7 +180,7 @@ public class Predator extends Agent {
         
         for(int j = 0;j < outputLayerSize;j++){
             x = 0;
-            for(int i = 0;i < hiddenLayerSize;i++){
+            for(int i = 0;i < hiddenLayerSize+1;i++){
                 x += hiddenLayerOutput[i] * w2[i][j];
             }
             output[j] = (int) ((int) 1/(1+Math.pow(Math.E, -x)));

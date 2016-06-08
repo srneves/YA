@@ -19,9 +19,7 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
     final private int predatorNumOutputs;
     final private int numEnvironmentRuns;
 
-    public int getNumEnvironmentRuns() {
-        return numEnvironmentRuns;
-    }
+   
    
     
 
@@ -66,6 +64,11 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
     public int getNumEvironmentSimulations(){
         return numEnvironmentRuns;
     }
+
+    public int getMaxIterations() {
+        return maxIterations;
+    }
+    
 
     public static PursuitDomainProblem buildProblemFromFile(File file) throws IOException {
         java.util.Scanner f = new java.util.Scanner(file);

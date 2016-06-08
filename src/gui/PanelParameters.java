@@ -1,6 +1,6 @@
 package gui;
 
-import ga.geneticOperators.MutationMUTATION_NAME;
+import ga.geneticOperators.MutationDouble;
 import ga.geneticOperators.Recombination;
 import ga.geneticOperators.RecombinationOneCut;
 import ga.geneticOperators.RecombinationTwoCuts;
@@ -26,6 +26,8 @@ public class PanelParameters extends PanelAtributesValue {
     public static final String TOURNAMENT_SIZE = "2";
     public static final String PROB_RECOMBINATION = "0.7";
     public static final String PROB_MUTATION = "0.1";
+    public static final String DELTA = "0.5";
+    
     String[] controllers = {"Random", "Ad-hoc", "Neural Networks"};
     JComboBox jComboBoxController = new JComboBox(controllers);
     JTextField jTextFieldSeed = new JTextField(SEED, TEXT_FIELD_LENGHT);
@@ -38,6 +40,7 @@ public class PanelParameters extends PanelAtributesValue {
     JComboBox jComboBoxRecombinationMethods = new JComboBox(recombinationMethods);
     JTextField jTextFieldProbRecombination = new JTextField(PROB_RECOMBINATION, TEXT_FIELD_LENGHT);
     JTextField jTextFieldProbMutation = new JTextField(PROB_MUTATION, TEXT_FIELD_LENGHT);
+    JTextField jTextFieldDelta = new JTextField(DELTA);
     //MORE PARAMETERS?
     
     public PanelParameters() {
@@ -75,6 +78,9 @@ public class PanelParameters extends PanelAtributesValue {
 
         labels.add(new JLabel("Mutation prob.: "));
         valueComponents.add(jTextFieldProbMutation);
+        
+         labels.add(new JLabel("Delta.: "));
+        valueComponents.add(jTextFieldDelta);
 
         //MORE PARAMETERS?
         
@@ -111,10 +117,11 @@ public class PanelParameters extends PanelAtributesValue {
         return null;
     }
 
-    public MutationMUTATION_NAME<PredatorIndividual> getMutationMethod() {
+    public MutationDouble<PredatorIndividual> getMutationMethod() {
         double mutationProbability = Double.parseDouble(jTextFieldProbMutation.getText());
+        double delta = Double.parseDouble(jTextFieldDelta.getText());
         //COMPLETE?
-        return new MutationMUTATION_NAME<>(mutationProbability/*COMPLETE?*/);
+        return new MutationDouble<>(mutationProbability,delta/*COMPLETE?*/);
     }
 }
 

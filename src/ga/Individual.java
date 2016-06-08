@@ -1,9 +1,12 @@
 package ga;
 
+import pursuitDomain.Environment;
+
 public abstract class Individual<P extends Problem, I extends Individual> implements Comparable<I>{
 
     protected double fitness;
     protected P problem;
+    
 
     public Individual(P problem) {
         this.problem = problem;

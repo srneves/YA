@@ -13,8 +13,8 @@ public class Environment {
     private final List<Predator> predators;
     private final Prey prey;
     private final int maxIterations;
-
-    //MORE ATTRIBUTES?
+    
+    //MORE ATTRIBUTES? NO |
     
     public Environment(
             int size,
@@ -66,9 +66,7 @@ public class Environment {
         for (Predator predator : predators) {
             predator.setCell(null);
         }
-
         prey.setCell(getCell(random.nextInt(grid.length), random.nextInt(grid.length)));
-
         for (Predator predator : predators) {
             do {
                 Cell cell = getCell(
@@ -82,13 +80,6 @@ public class Environment {
         
     //MAKES A SIMULATION OF THE ENVIRONMENT. THE AGENTS START IN THE POSITIONS
     //WHERE THEY WHERE PLACED IN METHOD initializeAgentsPositions.
-    /*public void simulate() {
-        prey.act(this);
-        for (Predator p : predators){
-            p.act(this);
-        }
-    }*/
-    
     public void simulate(){
         for (int i = 0; i < maxIterations; i++) {
             prey.act(this);
@@ -97,7 +88,7 @@ public class Environment {
                 fireUpdatedEnvironment();
             }
             if (apanhada()) {
-                System.out.println("apanhado" + " " + i);
+                System.out.println("apanhado");
                 return;
             }
         }
@@ -121,25 +112,14 @@ public class Environment {
     public boolean apanhada(){
         return getFreeSorroundingCells(prey.getCell()).isEmpty();
     }
-    
-    
-    
 
     //COMPUTES THE SUM OF THE (SMALLEST) DISTANCES OF ALL THE PREDATORS TO THE PREY.
     //IT TAKES INTO ACCOUNT THAT THE ENVIRONMENT IS TOROIDAL.
     public int computePredatorsPreyDistanceSum() {
-        int sum = 0,xx = 0,yy = 0;
-        int preyx = prey.getCell().getColumn();
-        int preyy = prey.getCell().getLine();
-        for (Predator p : predators){
-            xx = Math.abs(p.getCell().getColumn() - preyx);
-            yy = Math.abs(p.getCell().getLine()- preyy);
-            if (Math.abs(p.getCell().getColumn() - preyx) > 5)
-                xx = 10 - Math.abs(p.getCell().getColumn());
-            if (Math.abs(p.getCell().getLine()- preyy) > 5)
-                yy = 10 - Math.abs(p.getCell().getLine());
-            
-            sum += Math.sqrt (xx * xx + yy * yy);
+       int sum=0;
+        for(Predator p:predators){
+            sum+=p.calculateHorizontalPredatorPreyDistance(prey);
+            sum+=p.calculateVerticalPredatorPreyDistance(prey);
         }
         return sum;
     }
