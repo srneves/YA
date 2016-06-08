@@ -6,6 +6,7 @@ import ga.RealVectorIndividual;
 public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProblem, PredatorIndividual> {
 
     private Environment environment;
+    
     public PredatorIndividual(PursuitDomainProblem problem, int size , Environment environment /*COMPLETE?*/) {
         super(problem, size);   
         this.environment = environment;
