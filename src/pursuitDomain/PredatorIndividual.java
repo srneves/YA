@@ -1,13 +1,17 @@
 package pursuitDomain;
 
 import ga.RealVectorIndividual;
+import gui.MainFrame;
 import gui.PanelParameters;
 
 
 public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProblem, PredatorIndividual> {
 
+    
     public PredatorIndividual(PursuitDomainProblem problem, int size /*COMPLETE?*/) {
-        super(problem, size);
+        super(problem, size);  
+        
+       
         //COMPLETE?
     }
 
@@ -18,20 +22,19 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
 
     @Override
     public double computeFitness() {
-        problem.getEnvironment().setPredatorsWeights(genome);
-        
+        Environment env = problem.getEnvironment();
+        env.setPredatorsWeights(genome);
         fitness = 0;
-        for(int i = 0; i < problem.getNumEvironmentSimulations(); i++){
-            problem.getEnvironment().initializeAgentsPositions(i);
-            problem.getEnvironment().simulate();
-        
-            fitness = problem.getEnvironment().computePredatorsPreyDistanceSum();
-        }
-        return fitness;
+        for (int i = 0; i < problem.getNumEvironmentSimulations(); i++){
+            env.initializeAgentsPositions(i);
+            env.simulate();
+            fitness = env.computePredatorsPreyDistanceSum();
+        }    
+       return fitness;
     }
 
     public double[] getGenome(){
-        return genome;
+        return genome.clone();
     }
 
     @Override
@@ -39,6 +42,9 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
         StringBuilder sb = new StringBuilder();
         sb.append("\nfitness: ");
         sb.append(fitness);
+        sb.append("\nNumero de Simulacoes: ");
+        sb.append(problem.getNumEvironmentSimulations());
+        
         //COMPLETE
         return sb.toString();
     }
@@ -51,10 +57,11 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
      */
     @Override
     public int compareTo(PredatorIndividual i) {
-        if(this.getFitness() > i.getFitness())
-            return 1;
-        if(this.getFitness() < i.getFitness())
+        //TODO
+        if(this.fitness > i.fitness)
             return -1;
+        if(this.fitness < i.fitness)
+            return 1;
         return 0;
     }
 

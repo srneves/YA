@@ -16,6 +16,7 @@ public class PursuitDomainExperimentsFactory extends ExperimentsFactory {
 
     private int populationSize;
     private int maxGenerations;
+    private double delta;
     private SelectionMethod<PredatorIndividual, PursuitDomainProblem> selection;
     private Recombination<PredatorIndividual> recombination;
     private Mutation<PredatorIndividual> mutation;
@@ -31,6 +32,7 @@ public class PursuitDomainExperimentsFactory extends ExperimentsFactory {
         numRuns = Integer.parseInt(getParameterValue("Runs"));
         populationSize = Integer.parseInt(getParameterValue("Population size"));
         maxGenerations = Integer.parseInt(getParameterValue("Max generations"));
+        delta = Double.parseDouble(getParameterValue("delta"));
 
         //SELECTION
         if (getParameterValue("Selection").equals("tournament")) {
@@ -56,7 +58,7 @@ public class PursuitDomainExperimentsFactory extends ExperimentsFactory {
         double mutationProbability = Double.parseDouble(getParameterValue("Mutation probability"));
         if (getParameterValue("Mutation").equals("uniform_distribution")) {
             //OTHER PARAMETERS TO YOUR MUTATION OPERATOR, IF THEY EXIST ARE FETCHED HERE
-            mutation = new MutationMUTATION_NAME<>(mutationProbability/*COMPLETE?*/);
+            mutation = new MutationDouble<>(mutationProbability,delta/*COMPLETE?*/);
         }
 
         //PROBLEM 
