@@ -61,7 +61,7 @@ public class Predator extends Agent {
         execute(Action.values()[rnd.nextInt(4)], environment);
     }
     
-    void actAdhoc(Environment environment) {
+    public void actAdhoc(Environment environment) {
         execute(decideAdhoc(environment), environment);
     }
 
@@ -88,17 +88,21 @@ public class Predator extends Agent {
     
     private Action decideAdhoc(Environment environment) {
         Prey prey =  environment.getPrey();
-        int verticalDist = calculateVerticalPredatorPreyDistance(environment.getPrey());
-        int horizontalDist = calculateHorizontalPredatorPreyDistance(environment.getPrey());
+        int verticalDist = calculateVerticalPredatorPreyDistance(prey);
+        int horizontalDist = calculateHorizontalPredatorPreyDistance(prey);
+        System.out.print(String.valueOf(horizontalDist));
+        System.out.print("  ");
+        System.out.print(String.valueOf(verticalDist));
+        System.out.print("  ");
         
-        if(verticalDist > horizontalDist){
-            if(horizontalDist > 0){
+          if(verticalDist < horizontalDist){
+            if(horizontalDist >= 1){
                 return Action.EAST;
             }else{
                 return Action.WEST;
             }
         }else{
-            if(verticalDist > 0){
+            if(verticalDist >=1 ){
                 return Action.SOUTH;
             }else{
                 return Action.NORTH;
@@ -107,11 +111,19 @@ public class Predator extends Agent {
     }
     
     private int calculateVerticalPredatorPreyDistance(Prey prey) {
-        return prey.cell.getLine()-this.cell.getLine();
+        int val = (Math.abs(prey.cell.getLine()-this.cell.getLine()));
+        if(val>5){
+            return (10-val);
+        }else
+        return val;
     }
     
      private int calculateHorizontalPredatorPreyDistance(Prey prey) {
-        return prey.cell.getColumn()-this.cell.getColumn();
+        int val =Math.abs(prey.cell.getColumn()-this.cell.getColumn());
+        if(val>5){
+            return (10-val);
+        }else
+        return val;
     }
 
     private void execute(Action action, Environment environment) {

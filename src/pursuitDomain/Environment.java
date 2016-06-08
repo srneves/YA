@@ -82,10 +82,24 @@ public class Environment {
         
     //MAKES A SIMULATION OF THE ENVIRONMENT. THE AGENTS START IN THE POSITIONS
     //WHERE THEY WHERE PLACED IN METHOD initializeAgentsPositions.
-    public void simulate() {
+    /*public void simulate() {
         prey.act(this);
         for (Predator p : predators){
             p.act(this);
+        }
+    }*/
+    
+    public void simulate(){
+        for (int i = 0; i < maxIterations; i++) {
+            prey.act(this);
+            for (Predator predator : predators) {
+                predator.act(this);
+                fireUpdatedEnvironment();
+            }
+            if (apanhada()) {
+                System.out.println("apanhado" + " " + i);
+                return;
+            }
         }
     }
     
@@ -103,6 +117,13 @@ public class Environment {
             p.actAdhoc(this);
         }
     }
+    
+    public boolean apanhada(){
+        return getFreeSorroundingCells(prey.getCell()).isEmpty();
+    }
+    
+    
+    
 
     //COMPUTES THE SUM OF THE (SMALLEST) DISTANCES OF ALL THE PREDATORS TO THE PREY.
     //IT TAKES INTO ACCOUNT THAT THE ENVIRONMENT IS TOROIDAL.

@@ -8,9 +8,9 @@ import gui.MainFrame;
 public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProblem, PredatorIndividual> {
 
     private Environment environment;
-    public PredatorIndividual(PursuitDomainProblem problem, int size , Environment environment /*COMPLETE?*/) {
+    public PredatorIndividual(PursuitDomainProblem problem, int size /*COMPLETE?*/) {
         super(problem, size);   
-        this.environment = environment;
+       
         //COMPLETE?
     }
 
@@ -21,23 +21,19 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
 
     @Override
     public double computeFitness() {
+        
         //environment.setPredatorsWeights(this.genome);
-        System.out.println(String.valueOf(genome));
+        //System.out.println(String.valueOf(genome));
         //setPredatorsWeights();
         //somatorio da distancia dos predadores
         //a dividir pelo numchatches +1
         //environment.setPredatorsWeights(this.genome);
-        int localFitness = 0;
-        //int i = environment.computePredatorsPreyDistanceSum();
-        for(int i = 0; i < problem.getNumEnvironmentRuns(); i++)
-        {
-            environment.initializeAgentsPositions(i);
-            environment.simulate();
-            //compute fitness after they run: get the iterations, final distance and maybe average distance to prey;
-            localFitness += environment.computePredatorsPreyDistanceSum();
-            //todo;
-        }
-        this.fitness = localFitness;
+        //int localFitness = 0;
+        //compute fitness after they run: get the iterations, final distance and maybe average distance to prey;
+        //localFitness += environment.computePredatorsPreyDistanceSum();
+        //todo;
+        //}
+        //this.fitness = localFitness;
         return fitness;
     }
 
