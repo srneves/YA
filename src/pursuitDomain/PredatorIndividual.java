@@ -1,9 +1,6 @@
 package pursuitDomain;
 
 import ga.RealVectorIndividual;
-import gui.MainFrame;
-import gui.PanelParameters;
-
 
 public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProblem, PredatorIndividual> {
 
