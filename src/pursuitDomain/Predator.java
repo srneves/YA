@@ -3,7 +3,6 @@ package pursuitDomain;
 import ga.GeneticAlgorithm;
 import java.awt.Color;
 import java.util.List;
-import java.util.Random;
 
 public class Predator extends Agent {
    
@@ -56,9 +55,8 @@ public class Predator extends Agent {
         execute(decide(), environment);
     }
     
-    public void actRandom(Environment environment){
-        Random rnd = new Random();
-        execute(Action.values()[rnd.nextInt(4)], environment);
+    public void actRandom(Environment environment){  
+        execute(Action.values()[GeneticAlgorithm.random.nextInt(4)], environment);
     }
     
     public void actAdhoc(Environment environment) {
@@ -67,10 +65,15 @@ public class Predator extends Agent {
 
     //Predators' coordinates relative to the Prey
     private void buildPerception(Environment environment) {
-            for (int i=0; i< inputs.length; i+=2){
-                inputs[i] = calculateVerticalPredatorPreyDistance(environment.getPrey());
-                inputs[i+1] = calculateHorizontalPredatorPreyDistance(environment.getPrey());
-            }
+       int i=0;
+        for(Predator p : environment.getPredators()){
+            //for (int i=0; i< inputs.length; i+=2){
+                inputs[i] = environment.getPrey().getCell().getLine() - p.getCell().getLine();
+                inputs[i+1] = environment.getPrey().getCell().getColumn()- p.getCell().getColumn();
+                i++;
+           // }
+        }
+            
     }
 
     private Action decide() {

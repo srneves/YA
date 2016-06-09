@@ -1,29 +1,30 @@
 package pursuitDomain;
 
+import ga.GeneticAlgorithm;
 import java.awt.Color;
 import java.util.Random;
 
 public class Prey extends Agent{
 
     final private double restProbability;
-    private Random rnd;
+   
     
     public Prey(Cell cell, double restProbability){
         super(cell, Color.RED);
         this.restProbability = restProbability;
-        rnd = new Random();
+       
     }
     
     @Override
     public void act(Environment environment) {
-        if( rnd.nextDouble() > restProbability){
+        if( GeneticAlgorithm.random.nextDouble() > restProbability){
             execute(decide(), environment);
         }
     }
     
     private Action decide() {
         Action[] actions = Action.values();
-        return actions[rnd.nextInt(4)];
+        return actions[GeneticAlgorithm.random.nextInt(4)];
     }
     
     private void execute(Action action, Environment environment) {

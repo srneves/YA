@@ -1,5 +1,6 @@
 package pursuitDomain;
 
+import ga.GeneticAlgorithm;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -7,8 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Environment {
-
-    public Random random;
+    
     private final Cell[][] grid;
     private final List<Predator> predators;
     private final Prey prey;
@@ -46,7 +46,7 @@ public class Environment {
             predators.add(new Predator(null, predatorsNumInputs, predatorsNumHiddenLayers, predatorsNumOutputs));
         }
         
-        this.random = new Random();
+        
     }
 
     //THIS METHOD SHOULD BE CALLED IN THE METHOD computeFitness BEFORE
@@ -62,17 +62,16 @@ public class Environment {
     public void initializeAgentsPositions(int seed) {
         //THE NEXT LINE MEANS THAT ALL INDIVIDUALS WILL BE EVALUATED WITH THE SAME
         //ENVIRONEMNT STARTING POSITIONS.
-        random.setSeed(seed);
         //reset cells
         prey.setCell(null);
         for (Predator predator : predators) {
             predator.setCell(null);
         }
-        prey.setCell(getCell(random.nextInt(grid.length), random.nextInt(grid.length)));
+        prey.setCell(getCell(GeneticAlgorithm.random.nextInt(grid.length), GeneticAlgorithm.random.nextInt(grid.length)));
         for (Predator predator : predators) {
             do {
                 Cell cell = getCell(
-                        random.nextInt(grid.length), random.nextInt(grid.length));
+                        GeneticAlgorithm.random.nextInt(grid.length), GeneticAlgorithm.random.nextInt(grid.length));
                 if (!cell.hasAgent()) {
                     predator.setCell(cell);
                 }
@@ -137,7 +136,7 @@ public class Environment {
         return prey;
     }
     
-    public List getPredators() {
+    public List<Predator> getPredators() {
         return predators;
     }    
 

@@ -6,9 +6,7 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
 
     
     public PredatorIndividual(PursuitDomainProblem problem, int size /*COMPLETE?*/) {
-        super(problem, size);  
-        
-       
+        super(problem, size);       
         //COMPLETE?
     }
 
@@ -25,7 +23,7 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
         for (int i = 0; i < problem.getNumEvironmentSimulations(); i++){
             env.initializeAgentsPositions(i);
             env.simulate();
-            fitness = env.computePredatorsPreyDistanceSum();
+            fitness= env.computePredatorsPreyDistanceSum();        
         }    
        return fitness;
     }
