@@ -1,0 +1,7 @@
+
+
+<b>POP SIZE:</b>100	MAX GENS:100	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+fitness: 6.0
+catches: 0
+Numero de Simulacoes: 10

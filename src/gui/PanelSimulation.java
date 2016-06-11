@@ -69,16 +69,15 @@ public class PanelSimulation extends JPanel implements EnvironmentListener {
                 for (int i = 0; i < environmentSimulations; i++) {
                     environment.setPredatorsWeights(weights);
                     environment.initializeAgentsPositions(i);
-                    //for(int j=0; j < 20; j++){
-                        //environmentUpdated();
-                        if(CONTROLLER.equals("Random")){
-                            environment.simulateRandom();
-                        }else if(CONTROLLER.equals("Ad-hoc")){
-                            environment.simulateAdhoc();
-                        }else{
-                            environment.simulate();
-                        }
-                    //}
+                    environmentUpdated();
+                    
+                    if(CONTROLLER.equals("Random")){
+                        environment.simulateRandom();
+                    }else if(CONTROLLER.equals("Ad-hoc")){
+                        environment.simulateAdhoc();
+                    }else{
+                        environment.simulate();
+                    }
                 }
                 return null;
             }

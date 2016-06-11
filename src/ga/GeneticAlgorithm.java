@@ -6,6 +6,7 @@ import ga.selectionMethods.SelectionMethod;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import pursuitDomain.PursuitDomainProblem;
 
 public class GeneticAlgorithm<I extends Individual, P extends Problem<I>> {
 
@@ -56,6 +57,7 @@ public class GeneticAlgorithm<I extends Individual, P extends Problem<I>> {
             fireGenerationEnded(new GAEvent(this));
         }
         fireRunEnded(new GAEvent(this));
+        ((PursuitDomainProblem) problem).getEnvironment().clearNumCatches();
         return bestInRun;
     }
 

@@ -32,7 +32,7 @@ public class PursuitDomainExperimentsFactory extends ExperimentsFactory {
         numRuns = Integer.parseInt(getParameterValue("Runs"));
         populationSize = Integer.parseInt(getParameterValue("Population size"));
         maxGenerations = Integer.parseInt(getParameterValue("Max generations"));
-        delta = Double.parseDouble(getParameterValue("delta"));
+        delta = Double.parseDouble(getParameterValue("Delta"));
 
         //SELECTION
         if (getParameterValue("Selection").equals("tournament")) {
@@ -108,11 +108,11 @@ public class PursuitDomainExperimentsFactory extends ExperimentsFactory {
 
     private String buildTextualExperiment() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Population size:" + populationSize + "\t");
-        sb.append("Max generations:" + maxGenerations + "\t");
-        sb.append("Selection:" + selection + "\t");
-        sb.append("Recombination:" + recombination + "\t");
-        sb.append("Mutation:" + mutation + "\t");
+        sb.append("POP SIZE:" + populationSize + "\t");
+        sb.append("MAX GENS:" + maxGenerations + "\t");
+        sb.append("SELECTION:" + selection + "\t");
+        sb.append("RECOMBINATION:" + recombination + "\t");
+        sb.append("MUTATION:" + mutation + "\t");
         return sb.toString();
     }
 }

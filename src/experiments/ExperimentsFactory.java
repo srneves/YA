@@ -78,17 +78,17 @@ public abstract class ExperimentsFactory {
             orderedParametersVector[i++] = parameter;
         }
 
-//        //DEBUG
-//        for (i = 0; i < orderedParametersVector.length; i++) {
-//            System.out.print(orderedParametersVector[i].name + ": ");
-//            for (int j = 0; j < orderedParametersVector[i].getNumberOfValues(); j++) {
-//                System.out.print(orderedParametersVector[i].values[j]);
-//                if(j < orderedParametersVector[i].getNumberOfValues() - 1){
-//                    System.out.print(", ");
-//                }
-//            }
-//            System.out.println();
-//        }
+        //DEBUG
+        for (i = 0; i < orderedParametersVector.length; i++) {
+            System.out.print(orderedParametersVector[i].name + ": ");
+            for (int j = 0; j < orderedParametersVector[i].getNumberOfValues(); j++) {
+                System.out.print(orderedParametersVector[i].values[j]);
+                if(j < orderedParametersVector[i].getNumberOfValues() - 1){
+                    System.out.print(", ");
+                }
+            }
+            System.out.println();
+        }
     }
 
     private void readStatisticsFile(File file) throws IOException {

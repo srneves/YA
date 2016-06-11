@@ -2,7 +2,6 @@ package pursuitDomain;
 
 import ga.GeneticAlgorithm;
 import java.awt.Color;
-import java.util.List;
 
 public class Predator extends Agent {
    
@@ -67,11 +66,9 @@ public class Predator extends Agent {
     private void buildPerception(Environment environment) {
        int i=0;
         for(Predator p : environment.getPredators()){
-            //for (int i=0; i< inputs.length; i+=2){
-                inputs[i] = environment.getPrey().getCell().getLine() - p.getCell().getLine();
-                inputs[i+1] = environment.getPrey().getCell().getColumn()- p.getCell().getColumn();
-                i++;
-           // }
+            inputs[i] = calculatePredatorPreyDistance(environment.getPrey(), true);//environment.getPrey().getCell().getLine() - p.getCell().getLine();
+            inputs[i+1] = calculatePredatorPreyDistance(environment.getPrey(), false);//environment.getPrey().getCell().getColumn()- p.getCell().getColumn();
+            i++;
         }
             
     }
@@ -91,12 +88,8 @@ public class Predator extends Agent {
     
     private Action decideAdhoc(Environment environment) {
         Prey prey =  environment.getPrey();
-        int verticalDist = calculateVerticalPredatorPreyDistance(prey);
-        int horizontalDist = calculateHorizontalPredatorPreyDistance(prey);
-        /*System.out.print(String.valueOf(horizontalDist));
-        System.out.print("  ");
-        System.out.print(String.valueOf(verticalDist));
-        System.out.print("  ");*/
+        int verticalDist = calculatePredatorPreyDistance(prey, true);
+        int horizontalDist = calculatePredatorPreyDistance(prey, false);
         
         if(verticalDist < horizontalDist){
             if(horizontalDist >= 1){
@@ -105,7 +98,7 @@ public class Predator extends Agent {
                 return Action.WEST;
             }
         }else{
-            if(verticalDist >=1 ){
+            if(verticalDist >= 1){
                 return Action.SOUTH;
             }else{
                 return Action.NORTH;
@@ -113,32 +106,30 @@ public class Predator extends Agent {
         }
     }
     
-    public int calculateVerticalPredatorPreyDistance(Prey prey) {
-        int val = (Math.abs(prey.cell.getLine()-this.cell.getLine()));
-        if(val>5){
-            return (10-val);
+    public int calculatePredatorPreyDistance(Prey prey, boolean isVertical) {
+        int value = 0;
+        if(isVertical){
+            value = Math.abs(prey.cell.getLine() - this.cell.getLine());
+        }else{
+            value = Math.abs(prey.cell.getColumn() - this.cell.getColumn());
         }
-        return val;
+        if(value > 5){
+            return (10 - value);
+        }
+        return value;
     }
     
-     public int calculateHorizontalPredatorPreyDistance(Prey prey) {
-        int val =Math.abs(prey.cell.getColumn()-this.cell.getColumn());
-        if(val>5){
-            return (10-val);
-        }
-        return val;
-    }
-
     private void execute(Action action, Environment environment) {
         Cell nextCell;
-        if (action == Action.NORTH) {
-            nextCell = environment.getNorthCell(cell);
-        } else if (action == Action.SOUTH) {
-            nextCell = environment.getSouthCell(cell);
-        } else if (action == Action.WEST) {
-            nextCell = environment.getWestCell(cell);
-        } else {
-            nextCell = environment.getEastCell(cell);
+        switch(action){
+            case NORTH:nextCell = environment.getNorthCell(cell);
+                break;
+            case SOUTH:nextCell = environment.getSouthCell(cell);
+                break;
+            case WEST:nextCell = environment.getWestCell(cell);
+                break;
+            default:nextCell = environment.getEastCell(cell);
+                break;
         }
         if (!nextCell.hasAgent()) {
             setCell(nextCell);
@@ -149,10 +140,10 @@ public class Predator extends Agent {
      * Initializes the network's weights
      * 
      * @param weights vector of weights comming from the individual.
+     * @param k integer to function as weights index.
      */
-    public void setWeights(double[] weights) {
+    public void setWeights(double[] weights, int k) {
         //TODO
-        int k = 0;
         for(int i = 0;i < inputLayerSize;i++){
             for(int j = 0;j < hiddenLayerSize;j++){
                 w1[i][j] = weights[k++];
@@ -186,7 +177,7 @@ public class Predator extends Agent {
             for(int i = 0;i < hiddenLayerSize+1;i++){
                 x += hiddenLayerOutput[i] * w2[i][j];
             }
-            output[j] = (int) ((int) 1/(1+Math.pow(Math.E, -x)));
+            output[j] = (int) Math.round(1/(1+Math.pow(Math.E, -x)));
         }
     }
 }

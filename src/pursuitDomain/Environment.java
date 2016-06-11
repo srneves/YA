@@ -52,8 +52,9 @@ public class Environment {
     //THIS METHOD SHOULD BE CALLED IN THE METHOD computeFitness BEFORE
     //ALL THE SIMULATIONS START.
     public void setPredatorsWeights(double[] weights) {
+        int k = 0;
         for (Predator predator : predators) {
-            predator.setWeights(weights);
+            predator.setWeights(weights, k);
         }
     }
 
@@ -79,7 +80,7 @@ public class Environment {
         }        
     }
         
-    public void simulate(){
+    public int simulate(){
         for (int i = 0; i < maxIterations; i++) {
             prey.act(this);
             for (Predator predator : predators) {
@@ -89,23 +90,29 @@ public class Environment {
             if (apanhada()) {
                 System.out.println("apanhado");
                 catches++;
-                return;
+                return i;
             }
         }
+        return maxIterations;
     }
     
     public void simulateRandom() {
-        System.out.println(computePredatorsPreyDistanceSum());
-        prey.act(this);
-        for (Predator p : predators) {
-            p.actRandom(this);
+        for (int i = 0; i < maxIterations; i++) {
+            prey.act(this);
+            for (Predator p : predators) {
+                p.actRandom(this);
+                fireUpdatedEnvironment();
+            }
         }
     }
 
     public void simulateAdhoc() {
-        prey.act(this);
-        for (Predator p : predators) {
-            p.actAdhoc(this);
+        for (int i = 0; i < maxIterations; i++) {
+            prey.act(this);
+            for (Predator p : predators) {
+                p.actAdhoc(this);
+                fireUpdatedEnvironment();
+            }
         }
     }
     
@@ -118,14 +125,18 @@ public class Environment {
     public int computePredatorsPreyDistanceSum() {
        int sum=0;
         for(Predator p:predators){
-            sum+=p.calculateHorizontalPredatorPreyDistance(prey);
-            sum+=p.calculateVerticalPredatorPreyDistance(prey);
+            sum+=p.calculatePredatorPreyDistance(prey, false);
+            sum+=p.calculatePredatorPreyDistance(prey, true);
         }
         return sum;
     }
 
     public int getNumCatches() {
         return catches;
+    }
+    
+    public void clearNumCatches() {
+        this.catches = 0;
     }
     
     public int getSize() {

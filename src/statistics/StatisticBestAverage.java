@@ -33,6 +33,6 @@ public class StatisticBestAverage<E extends Individual, P extends Problem<E>> im
         double average = Maths.average(values);
         double sd = Maths.standardDeviation(values, average);
         
-        utils.FileOperations.appendToTextFile("statistic_average_fitness.xls", e.getSource() + "\t" + average + "\t" + sd + "\r\n");
+        utils.FileOperations.appendToTextFile("stats_results/statistic_average_fitness.xls", e.getSource() + "\tAVG FITNESS:" + average + "\tSD:" + sd + "\r\n");
     }    
 }
