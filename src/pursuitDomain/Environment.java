@@ -1,11 +1,11 @@
 package pursuitDomain;
 
 import ga.GeneticAlgorithm;
+import gui.ControllerType;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 public class Environment {
     
@@ -15,8 +15,6 @@ public class Environment {
     private final int maxIterations;
     private int catches;
     
-    //MORE ATTRIBUTES? NO!
-    
     public Environment(
             int size,
             int maxIterations,
@@ -24,7 +22,8 @@ public class Environment {
             int numPredators,
             int predatorsNumInputs,
             int predatorsNumHiddenLayers,
-            int predatorsNumOutputs) {
+            int predatorsNumOutputs,
+            ControllerType controller) {
 
         this.maxIterations = maxIterations;
         this.catches = 0;
@@ -42,11 +41,24 @@ public class Environment {
         prey = new Prey(null, probPreyRests);
 
         predators = new LinkedList<>();
-        for(int i = 0; i < numPredators; i++){
-            predators.add(new Predator(null, predatorsNumInputs, predatorsNumHiddenLayers, predatorsNumOutputs));
+        
+        switch(controller){
+            case RANDOM:
+                for(int i = 0; i < numPredators; i++){
+                    predators.add(new PredatorRandom(null, predatorsNumInputs, predatorsNumHiddenLayers, predatorsNumOutputs));
+                }
+                break;
+            case ADHOC:
+                for(int i = 0; i < numPredators; i++){
+                    predators.add(new PredatorAdhoc(null, predatorsNumInputs, predatorsNumHiddenLayers, predatorsNumOutputs));
+                }
+                break;
+            default:
+                for(int i = 0; i < numPredators; i++){
+                    predators.add(new Predator(null, predatorsNumInputs, predatorsNumHiddenLayers, predatorsNumOutputs));
+                }
+                break;
         }
-        
-        
     }
 
     //THIS METHOD SHOULD BE CALLED IN THE METHOD computeFitness BEFORE
@@ -94,26 +106,6 @@ public class Environment {
             }
         }
         return maxIterations;
-    }
-    
-    public void simulateRandom() {
-        for (int i = 0; i < maxIterations; i++) {
-            prey.act(this);
-            for (Predator p : predators) {
-                p.actRandom(this);
-                fireUpdatedEnvironment();
-            }
-        }
-    }
-
-    public void simulateAdhoc() {
-        for (int i = 0; i < maxIterations; i++) {
-            prey.act(this);
-            for (Predator p : predators) {
-                p.actAdhoc(this);
-                fireUpdatedEnvironment();
-            }
-        }
     }
     
     public boolean apanhada(){

@@ -4,3 +4,4 @@ Prey rest probability: 0.1
 Number of predators: 4
 Number of hidden units: 10
 Number of environment runs: 10
+Controller: ADHOC

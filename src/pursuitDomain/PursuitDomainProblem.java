@@ -1,6 +1,7 @@
 package pursuitDomain;
 
 import ga.Problem;
+import gui.ControllerType;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -19,11 +20,8 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
     final private int predatorNumOutputs;
     final private int numEnvironmentRuns;
 
-   
-   
-    
-
     final private Environment environment;
+    private static ControllerType controller;
 
     public PursuitDomainProblem(
             int environmentSize,
@@ -31,7 +29,8 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
             double probPreyRests,
             int numPredators,
             int numPredatorHiddenUnits,
-            int numEnvironmentRuns) {
+            int numEnvironmentRuns,
+            ControllerType controller) {
         this.environmentSize = environmentSize;
         this.maxIterations = maxIterations;
         this.probPreyRest = probPreyRests;
@@ -40,6 +39,7 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
         this.predatorsNumHiddenUnits = numPredatorHiddenUnits;
         this.predatorNumOutputs = NUM_PREDATOR_OUTPUTS;
         this.numEnvironmentRuns = numEnvironmentRuns;
+        this.controller = controller;
 
         environment = new Environment(
                 environmentSize,
@@ -48,7 +48,8 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
                 numPredators,
                 predatorsNumInputs,
                 numPredatorHiddenUnits,
-                predatorNumOutputs);
+                predatorNumOutputs,
+                controller);
     }
 
     @Override
@@ -67,6 +68,14 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
 
     public int getMaxIterations() {
         return maxIterations;
+    }
+    
+    public ControllerType getController(){
+        return controller;
+    }
+    
+    public static void setController(ControllerType type){
+        controller = type;
     }
     
 
@@ -94,6 +103,7 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
         int numPredators = Integer.parseInt(parametersValues.get(3));
         int numHiddenUnits = Integer.parseInt(parametersValues.get(4));
         int numEnvironmentRuns = Integer.parseInt(parametersValues.get(5));
+        ControllerType controller = ControllerType.valueOf(parametersValues.get(6));
 
         return new PursuitDomainProblem(
                 environmentSize,
@@ -101,12 +111,16 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
                 probPreyRests,
                 numPredators,
                 numHiddenUnits,
-                numEnvironmentRuns);
+                numEnvironmentRuns,
+                controller);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("Controller: ");
+        sb.append(controller);
+        sb.append("\n");
         sb.append("Environment size: ");
         sb.append(environmentSize);
         sb.append("\n");

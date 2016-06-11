@@ -53,21 +53,13 @@ public class Predator extends Agent {
         buildPerception(environment);
         execute(decide(), environment);
     }
-    
-    public void actRandom(Environment environment){  
-        execute(Action.values()[GeneticAlgorithm.random.nextInt(4)], environment);
-    }
-    
-    public void actAdhoc(Environment environment) {
-        execute(decideAdhoc(environment), environment);
-    }
 
     //Predators' coordinates relative to the Prey
-    private void buildPerception(Environment environment) {
+    protected void buildPerception(Environment environment) {
        int i=0;
         for(Predator p : environment.getPredators()){
-            inputs[i] = calculatePredatorPreyDistance(environment.getPrey(), true);//environment.getPrey().getCell().getLine() - p.getCell().getLine();
-            inputs[i+1] = calculatePredatorPreyDistance(environment.getPrey(), false);//environment.getPrey().getCell().getColumn()- p.getCell().getColumn();
+            inputs[i] = calculatePredatorPreyDistance(environment.getPrey(), true);
+            inputs[i+1] = calculatePredatorPreyDistance(environment.getPrey(), false);
             i++;
         }
             
@@ -86,26 +78,6 @@ public class Predator extends Agent {
         return Action.EAST;
     }
     
-    private Action decideAdhoc(Environment environment) {
-        Prey prey =  environment.getPrey();
-        int verticalDist = calculatePredatorPreyDistance(prey, true);
-        int horizontalDist = calculatePredatorPreyDistance(prey, false);
-        
-        if(verticalDist < horizontalDist){
-            if(horizontalDist >= 1){
-                return Action.EAST;
-            }else{
-                return Action.WEST;
-            }
-        }else{
-            if(verticalDist >= 1){
-                return Action.SOUTH;
-            }else{
-                return Action.NORTH;
-            }
-        }
-    }
-    
     public int calculatePredatorPreyDistance(Prey prey, boolean isVertical) {
         int value = 0;
         if(isVertical){
@@ -119,7 +91,7 @@ public class Predator extends Agent {
         return value;
     }
     
-    private void execute(Action action, Environment environment) {
+    protected void execute(Action action, Environment environment) {
         Cell nextCell;
         switch(action){
             case NORTH:nextCell = environment.getNorthCell(cell);
