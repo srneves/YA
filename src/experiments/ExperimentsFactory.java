@@ -19,8 +19,10 @@ public abstract class ExperimentsFactory {
     protected Parameter[] orderedParametersVector;
     protected List<String> statisticsNames;
     protected List<ExperimentListener> statistics;
+    protected String filename;
 
     public ExperimentsFactory(File configFile) throws IOException {
+        this.filename = configFile.getName();
         readParametersFile(configFile);
         readStatisticsFile(configFile);
     }

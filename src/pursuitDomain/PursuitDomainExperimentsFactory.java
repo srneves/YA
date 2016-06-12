@@ -106,6 +106,7 @@ public class PursuitDomainExperimentsFactory extends ExperimentsFactory {
 
     private String buildTextualExperiment() {
         StringBuilder sb = new StringBuilder();
+        sb.append(filename+"\t\t");
         sb.append("CONTROLLER:" + problem.getController() + "\t");
         sb.append("POP SIZE:" + populationSize + "\t");
         sb.append("MAX GENS:" + maxGenerations + "\t");
