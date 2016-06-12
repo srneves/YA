@@ -26,7 +26,7 @@ Delta: 0.02
 
 //--------------------------------
 
-Problem file: ./DataSets/DataSet1.txt
+Problem file: ./DataSets/DataSet1_Adhoc.txt
 
 //--------------------------------
 
