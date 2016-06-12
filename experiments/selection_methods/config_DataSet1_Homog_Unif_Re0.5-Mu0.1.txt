@@ -1,0 +1,34 @@
+Runs: 10
+
+Population size: 100
+
+Max generations: 500
+
+//--------------------------------
+
+Selection: tournament
+
+Tournament size: 2
+
+//--------------------------------
+
+Recombination: uniform
+
+Recombination probability: 0.5
+
+//--------------------------------
+
+Mutation: uniform_distribution
+
+Mutation probability: 0.1
+
+Delta: 0.02
+
+//--------------------------------
+
+Problem file: ./DataSets/DataSet1_Homog.txt
+
+//--------------------------------
+
+Statistic: BestIndividual
+Statistic: BestAverage
