@@ -100,15 +100,15 @@ public class Environment {
                 fireUpdatedEnvironment();
             }
             if (apanhada()) {
-                System.out.println("apanhado");
-                catches++;
+                System.out.println("apanhado "+i);
+                ++catches;
                 return i;
             }
         }
         return maxIterations;
     }
     
-    public boolean apanhada(){
+    private boolean apanhada(){
         return getFreeSorroundingCells(prey.getCell()).isEmpty();
     }
     

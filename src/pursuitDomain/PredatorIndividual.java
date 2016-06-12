@@ -4,8 +4,6 @@ import ga.RealVectorIndividual;
 
 public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProblem, PredatorIndividual> {
     
-    private int iterations;
-    
     public PredatorIndividual(PursuitDomainProblem problem, int size /*COMPLETE?*/) {
         super(problem, size);       
         this.iterations = 0;
@@ -23,12 +21,12 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
         Environment env = problem.getEnvironment();
         env.setPredatorsWeights(genome);
         fitness = 0;
-        iterations = 0;
+        this.iterations = 0;
         for (int i = 0; i < problem.getNumEvironmentSimulations(); i++){
             env.initializeAgentsPositions(i);
-            iterations = env.simulate();
+            this.iterations = env.simulate();
             fitness = env.computePredatorsPreyDistanceSum()+iterations/(env.getNumCatches()+1);        
-        }    
+        }
        return fitness;
     }
 
