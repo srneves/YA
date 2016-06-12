@@ -26,6 +26,8 @@ public abstract class Individual<P extends Problem, I extends Individual> implem
     }
     
     public abstract int getIterations();
+    
+    public abstract int getNumCatches();
 
     @Override
     public abstract I clone();

@@ -28,7 +28,7 @@ public class StatisticBestInRun<I extends Individual, P extends Problem<I>> impl
 
     @Override
     public void experimentEnded(ExperimentEvent e) {
-        utils.FileOperations.appendToTextFile("stats_results/statistic_best_per_experiment_fitness.xls", e.getSource() + "\tFITNESS:" + bestInExperiment.getFitness() + "\tITERATIONS:" + bestInExperiment.getIterations() + "\r\n");
+        utils.FileOperations.appendToTextFile("stats_results/statistic_best_per_experiment_fitness.xls", e.getSource() + "\tFITNESS:" + bestInExperiment.getFitness() + "\tCATCHES:"+ bestInExperiment.getNumCatches() + "\tITERATIONS:" + bestInExperiment.getIterations() + "\r\n");
         utils.FileOperations.appendToTextFile("stats_results/statistic_best_per_experiment.txt", "\r\n\r\n" + e.getSource() + "\r\n" + bestInExperiment);
     }
 }

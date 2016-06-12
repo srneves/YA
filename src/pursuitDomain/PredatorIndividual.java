@@ -40,6 +40,11 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
     }
 
     @Override
+    public int getNumCatches() {
+        return problem.getEnvironment().getNumCatches();
+    }
+    
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("\nFitness: ");
