@@ -2,6 +2,7 @@ package experiments;
 
 import ga.GeneticAlgorithm;
 import ga.Problem;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class Experiment <E extends ExperimentsFactory, P extends Problem>{
     }
 
     public void fireExperimentEnded() {
+        Toolkit.getDefaultToolkit().beep();
         for (ExperimentListener listener : listeners) {
             listener.experimentEnded(new ExperimentEvent(this));
         }

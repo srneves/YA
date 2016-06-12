@@ -22,7 +22,7 @@ Mutation: uniform_distribution
 
 Mutation probability: 0.7
 
-Delta: 0.02
+Delta: 0.5
 
 //--------------------------------
 
