@@ -1,11 +1,8 @@
 package ga;
 
-import pursuitDomain.Environment;
-
 public abstract class Individual<P extends Problem, I extends Individual> implements Comparable<I>{
 
     protected double fitness;
-    protected int iterations;
     protected P problem;
     
 
@@ -28,9 +25,7 @@ public abstract class Individual<P extends Problem, I extends Individual> implem
         return fitness;
     }
     
-    public int getIterations(){
-        return iterations;
-    }
+    public abstract int getIterations();
 
     @Override
     public abstract I clone();

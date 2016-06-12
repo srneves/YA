@@ -4,16 +4,16 @@ import ga.RealVectorIndividual;
 
 public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProblem, PredatorIndividual> {
     
-    public PredatorIndividual(PursuitDomainProblem problem, int size /*COMPLETE?*/) {
-        super(problem, size);       
+    private int iterations;
+    
+    public PredatorIndividual(PursuitDomainProblem problem, int size) {
+        super(problem, size);
         this.iterations = 0;
-        //COMPLETE?
     }
 
     public PredatorIndividual(PredatorIndividual original) {
         super(original);
-        this.iterations = original.iterations;
-        //COMPLETE
+        this.iterations = original.getIterations();
     }
 
     @Override
@@ -21,11 +21,11 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
         Environment env = problem.getEnvironment();
         env.setPredatorsWeights(genome);
         fitness = 0;
-        this.iterations = 0;
+        iterations = 0;
         for (int i = 0; i < problem.getNumEvironmentSimulations(); i++){
             env.initializeAgentsPositions(i);
-            this.iterations = env.simulate();
-            fitness = env.computePredatorsPreyDistanceSum()+iterations/(env.getNumCatches()+1);        
+            iterations = env.simulate();
+            fitness = (env.computePredatorsPreyDistanceSum() + iterations)/(env.getNumCatches() + 1);
         }
        return fitness;
     }
@@ -35,18 +35,21 @@ public class PredatorIndividual extends RealVectorIndividual<PursuitDomainProble
     }
 
     @Override
+    public int getIterations() {
+        return iterations;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\nfitness: ");
+        sb.append("\nFitness: ");
         sb.append(fitness);
-        sb.append("\ncatches: ");
+        sb.append("\nCatches: ");
         sb.append(problem.getEnvironment().getNumCatches());
-        sb.append("\nNum. iterações para apanhar: ");
+        sb.append("\nNumber iterations (catch): ");
         sb.append(iterations);
-        sb.append("\nNumero de Simulacoes: ");
+        sb.append("\nNumber Simulations: ");
         sb.append(problem.getNumEvironmentSimulations());
-        
-        //COMPLETE
         return sb.toString();
     }
 

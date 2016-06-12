@@ -13,7 +13,7 @@ public class Environment {
     private final List<Predator> predators;
     private final Prey prey;
     private final int maxIterations;
-    private int catches;
+    private int catches, catches_copy;
     
     public Environment(
             int size,
@@ -100,8 +100,8 @@ public class Environment {
                 fireUpdatedEnvironment();
             }
             if (apanhada()) {
-                System.out.println("apanhado "+i);
-                ++catches;
+                catches++;
+                catches_copy = catches;
                 return i;
             }
         }
@@ -124,7 +124,7 @@ public class Environment {
     }
 
     public int getNumCatches() {
-        return catches;
+        return catches_copy;
     }
     
     public void clearNumCatches() {

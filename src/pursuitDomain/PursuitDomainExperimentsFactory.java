@@ -32,7 +32,6 @@ public class PursuitDomainExperimentsFactory extends ExperimentsFactory {
         numRuns = Integer.parseInt(getParameterValue("Runs"));
         populationSize = Integer.parseInt(getParameterValue("Population size"));
         maxGenerations = Integer.parseInt(getParameterValue("Max generations"));
-        delta = Double.parseDouble(getParameterValue("Delta"));
 
         //SELECTION
         if (getParameterValue("Selection").equals("tournament")) {
@@ -53,12 +52,11 @@ public class PursuitDomainExperimentsFactory extends ExperimentsFactory {
                 recombination = new RecombinationUniform<>(recombinationProbability);
         }
 
-        //COMPLETE
         //MUTATION
         double mutationProbability = Double.parseDouble(getParameterValue("Mutation probability"));
+        delta = Double.parseDouble(getParameterValue("Delta"));
         if (getParameterValue("Mutation").equals("uniform_distribution")) {
-            //OTHER PARAMETERS TO YOUR MUTATION OPERATOR, IF THEY EXIST ARE FETCHED HERE
-            mutation = new MutationDouble<>(mutationProbability, delta/*COMPLETE?*/);
+            mutation = new MutationDouble<>(mutationProbability, delta);
         }
 
         //PROBLEM 

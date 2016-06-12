@@ -20,8 +20,6 @@ public abstract class PanelAtributesValue extends JPanel {
 
     protected void configure() {
 
-        //for(JComponent textField : textFields)
-        //textField.setHorizontalAlignment(SwingConstants.RIGHT);
         GridBagLayout gridbag = new GridBagLayout();
         setLayout(gridbag);
 

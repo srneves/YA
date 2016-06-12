@@ -151,7 +151,7 @@ public class MainFrame extends JFrame implements GAListener {
     }
 
     public void buttonDataSet_actionPerformed(ActionEvent e) {
-        JFileChooser fc = new JFileChooser(new java.io.File("."));
+        JFileChooser fc = new JFileChooser(new java.io.File("./DataSets"));
         int returnVal = fc.showOpenDialog(this);
 
         try {

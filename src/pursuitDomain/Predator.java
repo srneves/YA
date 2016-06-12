@@ -1,6 +1,5 @@
 package pursuitDomain;
 
-import ga.GeneticAlgorithm;
 import java.awt.Color;
 
 public class Predator extends Agent {
@@ -115,7 +114,6 @@ public class Predator extends Agent {
      * @param k integer to function as weights index.
      */
     public void setWeights(double[] weights, int k) {
-        //TODO
         for(int i = 0;i < inputLayerSize;i++){
             for(int j = 0;j < hiddenLayerSize;j++){
                 w1[i][j] = weights[k++];
@@ -134,7 +132,6 @@ public class Predator extends Agent {
      *
      */
     private void forwardPropagation() {
-        //TODO
         double x;
         for(int j = 0;j < hiddenLayerSize;j++){
             x = 0;

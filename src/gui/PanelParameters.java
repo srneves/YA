@@ -39,7 +39,6 @@ public class PanelParameters extends PanelAtributesValue {
     JTextField jTextFieldProbRecombination = new JTextField(PROB_RECOMBINATION, TEXT_FIELD_LENGHT);
     JTextField jTextFieldProbMutation = new JTextField(PROB_MUTATION, TEXT_FIELD_LENGHT);
     JTextField jTextFieldDelta = new JTextField(DELTA);
-    //MORE PARAMETERS?
     
     public PanelParameters() {
         title = "Genetic algorithm parameters";
@@ -75,8 +74,6 @@ public class PanelParameters extends PanelAtributesValue {
         
          labels.add(new JLabel("Delta.: "));
         valueComponents.add(jTextFieldDelta);
-
-        //MORE PARAMETERS?
         
         configure();
     }
@@ -113,8 +110,7 @@ public class PanelParameters extends PanelAtributesValue {
     public MutationDouble<PredatorIndividual> getMutationMethod() {
         double mutationProbability = Double.parseDouble(jTextFieldProbMutation.getText());
         double delta = Double.parseDouble(jTextFieldDelta.getText());
-        //COMPLETE?
-        return new MutationDouble<>(mutationProbability,delta/*COMPLETE?*/);
+        return new MutationDouble<>(mutationProbability, delta);
     }
 }
 

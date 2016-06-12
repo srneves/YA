@@ -2,17 +2,14 @@ package pursuitDomain;
 
 import ga.GeneticAlgorithm;
 import java.awt.Color;
-import java.util.Random;
 
 public class Prey extends Agent{
 
-    final private double restProbability;
-   
+    final private double restProbability;   
     
     public Prey(Cell cell, double restProbability){
         super(cell, Color.RED);
         this.restProbability = restProbability;
-       
     }
     
     @Override
@@ -29,16 +26,16 @@ public class Prey extends Agent{
     
     private void execute(Action action, Environment environment) {
         Cell nextCell;
-        if (action == Action.NORTH) {
-            nextCell = environment.getNorthCell(cell);
-        } else if (action == Action.SOUTH) {
-            nextCell = environment.getSouthCell(cell);
-        } else if (action == Action.WEST) {
-            nextCell = environment.getWestCell(cell);
-        } else {
-            nextCell = environment.getEastCell(cell);
+        switch(action){
+            case NORTH:nextCell = environment.getNorthCell(cell);
+                break;
+            case SOUTH:nextCell = environment.getSouthCell(cell);
+                break;
+            case WEST:nextCell = environment.getWestCell(cell);
+                break;
+            default:nextCell = environment.getEastCell(cell);
+                break;
         }
-
         if (!nextCell.hasAgent()) {
             setCell(nextCell);
         }
