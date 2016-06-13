@@ -114,14 +114,15 @@ public class Predator extends Agent {
      * @param k integer to function as weights index.
      */
     public void setWeights(double[] weights, int k) {
+        int index = k;
         for(int i = 0;i < inputLayerSize;i++){
             for(int j = 0;j < hiddenLayerSize;j++){
-                w1[i][j] = weights[k++];
+                w1[i][j] = weights[index++];
             }
         }
         for(int i = 0;i < hiddenLayerSize+1;i++){
             for(int j = 0;j < outputLayerSize;j++){
-                w2[i][j] = weights[k++];
+                w2[i][j] = weights[index++];
             }
         }
     }

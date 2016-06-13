@@ -14,6 +14,7 @@ public class Environment {
     private final Prey prey;
     private final int maxIterations;
     private int catches, catches_copy;
+    private ControllerType controller;
     
     public Environment(
             int size,
@@ -27,6 +28,7 @@ public class Environment {
 
         this.maxIterations = maxIterations;
         this.catches = 0;
+        this.controller = controller;
 
         grid = new Cell[size][size];
         for (int i = 0; i < grid.length; i++) {
@@ -67,6 +69,9 @@ public class Environment {
         int k = 0;
         for (Predator predator : predators) {
             predator.setWeights(weights, k);
+            if(controller == ControllerType.HETEROGENEO){
+                k += (weights.length/predators.size());
+            }
         }
     }
 

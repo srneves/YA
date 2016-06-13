@@ -26,7 +26,7 @@ Delta: 0.5
 
 //--------------------------------
 
-Problem file: ./DataSets/DataSet1_Homo.txt
+Problem file: ./DataSets/DataSet1_Homog.txt
 
 //--------------------------------
 

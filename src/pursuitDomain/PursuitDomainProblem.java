@@ -55,6 +55,9 @@ public class PursuitDomainProblem implements Problem<PredatorIndividual> {
     @Override
     public PredatorIndividual getNewIndividual() {
         int genomeSize = (predatorsNumInputs + 1) * (predatorsNumHiddenUnits) + (predatorsNumHiddenUnits + 1)* predatorNumOutputs;
+        if(controller == ControllerType.HETEROGENEO){
+            genomeSize *= numPredators;
+        }
         return new PredatorIndividual(this, genomeSize);
     }
 
