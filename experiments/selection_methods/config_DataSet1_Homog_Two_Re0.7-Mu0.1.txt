@@ -12,7 +12,7 @@ Tournament size: 2
 
 //--------------------------------
 
-Recombination: two_cut
+Recombination: two_cuts
 
 Recombination probability: 0.7
 
