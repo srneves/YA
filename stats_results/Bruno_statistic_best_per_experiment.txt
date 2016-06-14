@@ -42,6 +42,41 @@ Catches: 4
 Number iterations (catch): 20
 Number Simulations: 10
 
+config_DataSet1_Heterog_Pop100.txt		CONTROLLER:HETEROGENEO	POP SIZE:100	MAX GENS:500	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 26
+Number iterations (catch): 7
+Number Simulations: 10
+
+config_DataSet1_Heterog_Pop350.txt		CONTROLLER:HETEROGENEO	POP SIZE:350	MAX GENS:500	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 196
+Number iterations (catch): 12
+Number Simulations: 10
+
+config_DataSet1_Heterog_Pop600.txt		CONTROLLER:HETEROGENEO	POP SIZE:600	MAX GENS:500	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 199
+Number iterations (catch): 20
+Number Simulations: 10
+
+config_DataSet1_Heterog_Pop850.txt		CONTROLLER:HETEROGENEO	POP SIZE:850	MAX GENS:500	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 353
+Number iterations (catch): 4
+Number Simulations: 10
+
+config_DataSet1_Heterog_Pop1100.txt		CONTROLLER:HETEROGENEO	POP SIZE:1100	MAX GENS:500	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 281
+Number iterations (catch): 5
+Number Simulations: 10
+
 config_DataSet1_Homog_One_Re0.5-Mu0.1.txt		CONTROLLER:HOMOGENEO	POP SIZE:100	MAX GENS:500	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.5)	MUTATION:Uniform distribution mutation (0.1	
 
 Fitness: 2.0
