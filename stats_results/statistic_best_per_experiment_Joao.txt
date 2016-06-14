@@ -1,0 +1,155 @@
+
+
+config_DataSet1_Homog_Tournment2.txt		CONTROLLER:HOMOGENEO	POP SIZE:100	MAX GENS:600	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 2.0
+Catches: 2
+Number iterations (catch): 20
+Number Simulations: 10
+
+config_DataSet1_Homog_Tournment3.txt		CONTROLLER:HOMOGENEO	POP SIZE:100	MAX GENS:600	SELECTION:Tournament(3)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 1.0
+Catches: 1
+Number iterations (catch): 17
+Number Simulations: 10
+
+config_DataSet1_Homog_Tournment4.txt		CONTROLLER:HOMOGENEO	POP SIZE:100	MAX GENS:600	SELECTION:Tournament(4)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 1.0
+Catches: 1
+Number iterations (catch): 20
+Number Simulations: 10
+
+config_DataSet1_Homog_Tournment5.txt		CONTROLLER:HOMOGENEO	POP SIZE:100	MAX GENS:600	SELECTION:Tournament(5)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 2.0
+Catches: 3
+Number iterations (catch): 7
+Number Simulations: 10
+
+config_DataSet1_Homog_Tournment6.txt		CONTROLLER:HOMOGENEO	POP SIZE:100	MAX GENS:600	SELECTION:Tournament(6)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 4
+Number iterations (catch): 14
+Number Simulations: 10
+
+config_DataSet1_Homog_Iteration10.txt		CONTROLLER:HOMOGENEO	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 21
+Number iterations (catch): 8
+Number Simulations: 10
+
+config_DataSet1_Homog_Iteration20.txt		CONTROLLER:HOMOGENEO	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 2
+Number iterations (catch): 8
+Number Simulations: 10
+
+config_DataSet1_Homog_Iteration50.txt		CONTROLLER:HOMOGENEO	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 3
+Number iterations (catch): 8
+Number Simulations: 10
+
+config_DataSet1_Adhoc_Iteration50.txt		CONTROLLER:ADHOC	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 25.0
+Catches: 0
+Number iterations (catch): 20
+Number Simulations: 10
+
+config_DataSet1_Adhoc_Iteration20.txt		CONTROLLER:ADHOC	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 25.0
+Catches: 0
+Number iterations (catch): 20
+Number Simulations: 10
+
+config_DataSet1_Adhoc_Iteration10.txt		CONTROLLER:ADHOC	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 25.0
+Catches: 0
+Number iterations (catch): 20
+Number Simulations: 10
+
+config_DataSet1_Random_Iteration50.txt		CONTROLLER:RANDOM	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 2
+Number iterations (catch): 0
+Number Simulations: 10
+
+config_DataSet1_Random_Iteration20.txt		CONTROLLER:RANDOM	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 2
+Number iterations (catch): 0
+Number Simulations: 10
+
+config_DataSet1_Random_Iteration10.txt		CONTROLLER:RANDOM	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 3
+Number iterations (catch): 0
+Number Simulations: 10
+
+config_DataSet1_Heterog_Iteration50.txt		CONTROLLER:HETEROGENEO	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 214
+Number iterations (catch): 7
+Number Simulations: 10
+
+config_DataSet1_Heterog_Iteration20.txt		CONTROLLER:HETEROGENEO	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 322
+Number iterations (catch): 7
+Number Simulations: 10
+
+config_DataSet1_Heterog_Iteration10.txt		CONTROLLER:HETEROGENEO	POP SIZE:100	MAX GENS:1000	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 92
+Number iterations (catch): 7
+Number Simulations: 10
+
+config_DataSet1_Heterog_Tournment2.txt		CONTROLLER:HETEROGENEO	POP SIZE:100	MAX GENS:600	SELECTION:Tournament(2)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 30
+Number iterations (catch): 7
+Number Simulations: 10
+
+config_DataSet1_Heterog_Tournment3.txt		CONTROLLER:HETEROGENEO	POP SIZE:100	MAX GENS:600	SELECTION:Tournament(3)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 78
+Number iterations (catch): 9
+Number Simulations: 10
+
+config_DataSet1_Heterog_Tournment4.txt		CONTROLLER:HETEROGENEO	POP SIZE:100	MAX GENS:600	SELECTION:Tournament(4)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 126
+Number iterations (catch): 12
+Number Simulations: 10
+
+config_DataSet1_Heterog_Tournment5.txt		CONTROLLER:HETEROGENEO	POP SIZE:100	MAX GENS:600	SELECTION:Tournament(5)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 142
+Number iterations (catch): 16
+Number Simulations: 10
+
+config_DataSet1_Heterog_Tournment6.txt		CONTROLLER:HETEROGENEO	POP SIZE:100	MAX GENS:600	SELECTION:Tournament(6)	RECOMBINATION:One cut recombination (0.7)	MUTATION:Uniform distribution mutation (0.1	
+
+Fitness: 0.0
+Catches: 35
+Number iterations (catch): 15
+Number Simulations: 10
